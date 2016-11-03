@@ -68,7 +68,7 @@ def main():
                 if sumi==add(toBin(j)):
                     print("Found two subsets with same sum!\nsubset1:",seperator(toBin(i)),"\nsubset2:",seperator(toBin(j)))
                     return 1 
-            print(j)
+            print(i,"->",j)
     return 0
 
 main()
