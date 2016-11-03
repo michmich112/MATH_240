@@ -4,6 +4,14 @@ numbers=[4149592715896318693849709,2534794902218749600993912,3190523465079491056
 bins=[]
 base=2**89
 
+f = open("data.txt","r")
+p = int(f.readline())
+o = int(f.readline())
+f.close()
+
+k = open("data.txt",'w')
+
+
 #def summing():
 #    for i in range(base):
 #        summ=0
@@ -58,17 +66,22 @@ def main():
     #print("started")
     #binaries()
     #print("a")
-    for i in range(1,base):
+    for i in range(p,base):
         sumi=add(toBin(i))
         print("*********************",i,"**********************")
-        for j in range(1,base):
+        for j in range(o,base):
             if i==j:
                 pass
             else:
                 if sumi==add(toBin(j)):
                     print("Found two subsets with same sum!\nsubset1:",seperator(toBin(i)),"\nsubset2:",seperator(toBin(j)))
-                    return 1 
+                    k.close()
+                    return 1
+            b=str(i)+"\n"+str(j)
+            k.write(b)
             print(i,"->",j)
+        a=str(i+1)+"\n1"
+        k.write(a)
     return 0
 
 main()
