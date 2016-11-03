@@ -4,7 +4,7 @@ numbers=[4149592715896318693849709,2534794902218749600993912,3190523465079491056
 bins=[]
 base=2**89
 
-f = open("data.txt","r")
+f = open("data.txt","r+")
 p = int(f.readline())
 o = int(f.readline())
 f.close()
@@ -69,19 +69,25 @@ def main():
     for i in range(p,base):
         sumi=add(toBin(i))
         print("*********************",i,"**********************")
-        for j in range(o,base):
-            if i==j:
-                pass
-            else:
-                if sumi==add(toBin(j)):
-                    print("Found two subsets with same sum!\nsubset1:",seperator(toBin(i)),"\nsubset2:",seperator(toBin(j)))
-                    k.close()
-                    return 1
-            b=str(i)+"\n"+str(j)
-            k.write(b)
-            print(i,"->",j)
-        a=str(i+1)+"\n1"
-        k.write(a)
+        with open("data.txt",'w') as k:
+            for j in range(o,base):
+                if i==j:
+                    pass
+                else:
+                    if sumi==add(toBin(j)):
+                        print("Found two subsets with same sum!\nsubset1:",seperator(toBin(i)),"\nsubset2:",seperator(toBin(j)))
+                        k.close()
+                        return 1
+                k.seek(0)
+                k.write(str(i))
+                k.write("\n")
+                k.write(str(j))
+                print(i,"->",j)
+            k.close()
+        m = open("data.txt",'w')
+        m.write(str(i+1))
+        m.write("1")
+        m.close()
     return 0
 
 main()
