@@ -11,16 +11,6 @@ f.close()
 
 k = open("data.txt",'w')
 
-
-#def summing():
-#    for i in range(base):
-#        summ=0
-#        quotients=toBin(i)
-#        for k in range(90):
-#            summ += (numbers[k]*quotients[k])
-#            sums.append(summ)
-#        print(i,"th subset summed")
-
 def toBin( value ):
     result=[]
     for i in range(90):
@@ -49,29 +39,28 @@ def seperator(subsetnumber):
             rsult.append(numbers[i])
     return rsult
 
-#def comparing():
-#    for i in range(base):
-#        for j in range(base):
-#            if i==j:
-#                pass
-#            else:
-#                if sums[i]==sums[j]:
-#                    print("Found two subsets with that same sum!: subset",i," and subset",j,"\n")
-#                    return 1
-#         print(i" compared, no same value\n")
-#    print("no value found")
-#    return 0
+def subsetsum(subset):
+    s=0
+    for k in range(90):
+        s+=subset[k]
+    return s
+
+def findone(subset):
+    for k in range(90):
+        if subset[k] == 1:
+            return k
 
 def main():
-    #print("started")
-    #binaries()
-    #print("a")
     for i in range(p,base):
         sumi=add(toBin(i))
         print("*********************",i,"**********************")
+        if (subsetsum(toBin(i))==1):
+            rank=findone(toBin(i))
         with open("data.txt",'w') as k:
             for j in range(o,base):
                 if i==j:
+                    pass
+                elif toBin(j)[rank]==1:
                     pass
                 else:
                     if sumi==add(toBin(j)):
