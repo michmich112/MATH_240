@@ -71,7 +71,7 @@ def main():
                 k.write(str(i))
                 k.write("\n")
                 k.write(str(j))
-                print(i,"->",j)
+                #print(i,"->",j)
             k.close()
         m = open("data.txt",'w')
         m.write(str(i+1))
